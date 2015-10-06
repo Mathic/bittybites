@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ order.firstName }}'s Bitty Bites Order{% endblock %}
+
+{% block content %}
+
+<h1>Order for: {{ order.firstName }}</h1>
+
+<ul>
+	{% for macaron in order.macaron_set.all %}
+	<li>{{ macaron.quantity }} {{ macaron.flavor.flavor }}</li>
+	{% endfor %}
+</ul>
+
+<h2>Total: ${{ order.total }}</h2>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Bitty Bites Order Form{% endblock %}
+
+{% block content %}
+
+<h1>Submit an Order</h1>
+
+<form>
+	<div class="form-group">
+		<div class="row">
+			<div class="col-xs-6">
+				<label for="name">Your name</label>
+				<input type="text" class="form-control" id="name" placeholder="Name">
+			</div>
+
+			<div class="col-xs-6">
+				<label for="phone">Phone Number</label>
+				<input type="text" class="form-control" id="phone" placeholder="Phone Number">
+			</div>
+		</div>
+	</div>
+
+	{% for flavor in flavors %}
+		{% if flavor.active %}
+		<div class="input-group col-xs-6">
+			<div class="input-group-addon">{{ flavor.flavor }}</div>
+			<input type="number" class="form-control" id="quantity" placeholder="Amount">
+		</div>
+		{% endif %}
+	{% endfor %}
+
+	<br/> 
+	<div class="input-group col-md-4">
+		<div class="input-group-addon">$</div>
+		<input type="text" class="form-control" id="total" placeholder="Total" readonly>
+		<div class="input-group-addon">.00</div>
+	</div>
+	<br/>
+  	<button type="submit" class="btn btn-default">Order!</button>
+</form>
+
+{% endblock %}

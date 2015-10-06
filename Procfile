@@ -1,0 +1,1 @@
+web: gunicorn bittybites.wsgi --log-file -
