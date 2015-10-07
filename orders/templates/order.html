@@ -10,26 +10,47 @@
 <form>
 	<div class="form-group">
 		<div class="row">
-			<div class="col-xs-6">
+			<div class="col-md-6">
 				<label for="name">Your name</label>
 				<input type="text" class="form-control" id="name" placeholder="Name">
 			</div>
 
-			<div class="col-xs-6">
+			<div class="col-md-6">
 				<label for="phone">Phone Number</label>
 				<input type="text" class="form-control" id="phone" placeholder="Phone Number">
 			</div>
 		</div>
 	</div>
 
+	<div class="row">
+	  
 	{% for flavor in flavors %}
 		{% if flavor.active %}
-		<div class="input-group col-xs-6">
+		<div class="col-sm-6 col-md-3">
+			<div class="thumbnail" style="box-shadow: 5px 5px 3px 1px #999">
+				<img src="{% static 'media/' %}{{ flavor.flavor }}.png" alt="{{ flavor.flavor }}">
+				<div class="caption">
+					<h3 style="text-align: center;">{{ flavor.flavor }}</h3>
+					<!-- <p>{{ flavor.description }}</p> -->
+					<div class="input-group col-md-6 col-md-offset-3">
+						<div class="input-group-btn">
+							<button class="btn btn-default glyphicon glyphicon-minus"></button>
+						</div>
+						<input type="text" class="form-control" aria-label="">
+						<div class="input-group-btn">
+							<button class="btn btn-default glyphicon glyphicon-plus"></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="input-group col-md-8">
 			<div class="input-group-addon">{{ flavor.flavor }}</div>
 			<input type="number" class="form-control" id="quantity" placeholder="Amount">
-		</div>
+		</div> -->
 		{% endif %}
 	{% endfor %}
+	</div>
 
 	<br/> 
 	<div class="input-group col-md-4">
