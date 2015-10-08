@@ -2,73 +2,79 @@
 
 {% block title %}Bitty Bites{% endblock %}
 
-{% block header %}
+{% block content %}
 
-<!-- Full Page Image Background Carousel Header -->
-<header id="myCarousel" class="carousel slide">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
+<div class="row">
+    <div class="box">
+        <div class="col-lg-12 text-center">
+            <div id="carousel-example-generic" class="carousel slide">
+                <!-- Indicators -->
+                <ol class="carousel-indicators hidden-xs">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
 
-    <!-- Wrapper for Slides -->
-    <div class="carousel-inner">
-        <div class="item active">
-            <!-- Set the first background image using inline CSS below. -->
-            <div class="fill" style="background-image: url('static/media/bittybites.jpg');"></div>
-            <div class="carousel-caption">
-                <h2>Raspberry Macarons</h2>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img class="img-responsive img-full" src="static/media/bittybites.jpg" alt="">
+                    </div>
+                    <div class="item">
+                        <img class="img-responsive img-full" src="static/media/bittybites-2.jpg" alt="">
+                    </div>
+                    <div class="item">
+                        <img class="img-responsive img-full" src="static/media/bittybites-3.jpg" alt="">
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="icon-prev"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span class="icon-next"></span>
+                </a>
             </div>
-        </div>
-        <div class="item">
-            <!-- Set the second background image using inline CSS below. -->
-            <div class="fill" style="background-image:url('static/media/bittybites-2.jpg');"></div>
-            <div class="carousel-caption">
-                <h2>Pumpkin Spice Macarons</h2>
-            </div>
-        </div>
-        <div class="item">
-            <!-- Set the third background image using inline CSS below. -->
-            <div class="fill" style="background-image:url('static/media/bittybites-3.jpg');"></div>
-            <div class="carousel-caption">
-                <h2>Red Velvet, Hazelnut, and Chocolate</h2>
-            </div>
+            <h2 class="brand-before">
+                <small>Welcome to</small>
+            </h2>
+            <h1 class="brand-name">Bitty Bites</h1>
+            <hr class="tagline-divider">
+            <h2>
+                <small>By
+                    <strong>Anh Nguyen</strong>
+                </small>
+            </h2>
         </div>
     </div>
-
-    <!-- Controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-        <span class="icon-prev"></span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-        <span class="icon-next"></span>
-    </a>
-
-</header>
-
-{% endblock %}
-
-{% block content %}
- 
-<!-- Example row of columns -->
-<div class="row">
-	{% for flavor in flavors %}
-		{% if flavor.active %}
-		<div class="col-lg-4">
-			<h2>{{flavor.flavor}}</h2>
-			<p>{{ flavor.description }}</p>
-		</div>
-		{% endif %}
-	{% endfor %}
 </div>
-<p><a class="btn btn-primary" href="/order" role="button">Order now! &raquo;</a></p>
+
+<!-- Example row of columns -->
+
+{% for flavor in flavors %}
+	{% if flavor.active %}
+    <div class="row">
+        <div class="box">
+        	<div class="col-lg-12">
+                <hr>
+                <h2 class="intro-text text-center">{{flavor.flavor}}
+                    <strong>Macaron</strong>
+                </h2>
+                <hr>
+        		<p>{{ flavor.description }}</p>
+        	</div>
+        </div>
+    </div>
+	{% endif %}
+{% endfor %}
+
+<!-- <p><a class="btn btn-primary" href="/order" role="button">Order now! &raquo;</a></p>
 
 <ul>
 	{% for order in all_orders %}
 	<li><a href="/detail/{{ order.id }}">{{ order.firstName }}</a></li>
 	{% endfor %}
-</ul>
+</ul> -->
 
 {% endblock %}
